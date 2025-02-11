@@ -53,3 +53,12 @@
     border-radius: 10px;
     background-color: greenyellow;
 }
+
+.sdg-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid green;
+    border-radius: 10px;
+    background-color: greenyellow;
+}
