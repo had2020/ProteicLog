@@ -22,3 +22,9 @@
     background-color: black;
     margin-bottom: 50px;
 }
+
+.nav-link.active {
+    border: 10px solid gray;
+    border-radius: 50px;
+    background-color: black;
+}
