@@ -1,8 +1,24 @@
 :root {
     color: #333;
+    background-color: #333;
 }
 
-footer-text {
+.footer-text {
+    text-align: center;
     background-color: black;
-    color: black;
+    color: white;
+    border: 5px solid gray;
+    border-radius: 50px;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav_bar {
+    text-align: center;
+    border: 5px solid gray;
+    border-radius: 50px;
+    background-color: black;
+    margin-bottom: 50px;
 }
