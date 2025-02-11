@@ -24,7 +24,32 @@
 }
 
 .nav-link.active {
-    border: 10px solid gray;
-    border-radius: 50px;
+    border: 7px solid gray;
+    border-radius: 10px;
     background-color: black;
+}
+
+/* For Plan */
+.section {
+    color: white;
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: #222;
+}
+
+.subtopic {
+    text-align: center;
+    color: white;
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: #555;
+}
+
+.SDGlink {
+    text-align: center;
+    font-size: 50px;
+    color: green;
+    border: 5px solid green;
+    border-radius: 10px;
+    background-color: greenyellow;
 }
