@@ -11,3 +11,6 @@ const year = currentDate.getFullYear();
 const month = currentDate.getMonth();
 const day = currentDate.getDate();
 console.log(year, month, day);
+
+const button2 = document.getElementById("test");
+button2.addEventListener("click", Test);
