@@ -17,14 +17,14 @@
 
 .nav_bar {
     text-align: center;
-    border: 5px solid gray;
+    border: 1px solid gray;
     border-radius: 50px;
     background-color: black;
     margin-bottom: 50px;
 }
 
 .nav-link.active {
-    border: 7px solid gray;
+    border: 2px solid gray;
     border-radius: 10px;
     background-color: black;
 }
@@ -88,9 +88,9 @@ body {
     transition: background 0.3s;
 }
 
-.nav-link:hover,
-.nav-link.active {
-    background-color: #005bb5;
+.nav-link:hover {
+    background-color: white;
+    color: black;
 }
 
 .section {
