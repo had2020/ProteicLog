@@ -1,7 +1,9 @@
 console.log("Loaded js...");
 
 // change data
-const element = document.getElementById("add_meal_confirm");
+let first_interation = true;
+let show_meal_window = false;
+const meal_window = document.getElementById("meal_window");
 
 // main code
 const currentDate = new Date();
@@ -14,6 +16,7 @@ const h1Element = document.getElementById("daynum");
 h1Element.innerHTML = day;
 
 function add_meal() {
+  show_meal_window = true;
   localStorage.setItem("test1", "add");
   console.log("msg: ", localStorage.getItem("test1"));
 }
@@ -83,4 +86,15 @@ function getAllergyColor(rating) {
 function update_table() {
   addRow("1/3/1", "Oatmeal", "Soup", "Pasta", "Sunny", "75℉ (24℃)", "2/5");
   addRow("1/4/1", "Eggs", "Sandwich", "Steak", "Cloudy", "68℉ (20℃)", "4/5");
+}
+
+// Initalize
+if (first_interation) {
+  meal_window.style.visibility = "hidden";
+  first_interation = false;
+}
+
+if (show_meal_window) {
+  console.log("dsd");
+  meal_window.style.visibility = "visible";
 }
