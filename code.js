@@ -1,5 +1,9 @@
 console.log("Loaded js...");
 
+// change data
+const element = document.getElementById("add_meal_confirm");
+
+// main code
 const currentDate = new Date();
 const year = currentDate.getFullYear();
 const month = currentDate.getMonth();
@@ -76,5 +80,7 @@ function getAllergyColor(rating) {
   }
 }
 
-addRow("1/3/1", "Oatmeal", "Soup", "Pasta", "Sunny", "75℉ (24℃)", "2/5");
-addRow("1/4/1", "Eggs", "Sandwich", "Steak", "Cloudy", "68℉ (20℃)", "4/5");
+function update_table() {
+  addRow("1/3/1", "Oatmeal", "Soup", "Pasta", "Sunny", "75℉ (24℃)", "2/5");
+  addRow("1/4/1", "Eggs", "Sandwich", "Steak", "Cloudy", "68℉ (20℃)", "4/5");
+}

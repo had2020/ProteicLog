@@ -164,3 +164,18 @@ footer {
     background: #222;
     border-radius: 3px;
 }
+
+.confirm_window {
+    outline: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.confirm_input {
+}
+
+.confirm_button {
+}
