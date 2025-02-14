@@ -2,7 +2,6 @@ console.log("Loaded js...");
 
 // change data
 let first_interation = true;
-let show_meal_window = false;
 const meal_window = document.getElementById("meal_window");
 
 // main code
@@ -15,22 +14,32 @@ console.log(day, month, year);
 const h1Element = document.getElementById("daynum");
 h1Element.innerHTML = day;
 
-function add_meal() {
-  show_meal_window = true;
-  localStorage.setItem("test1", "add");
-  console.log("msg: ", localStorage.getItem("test1"));
+function Add_meal() {
+  console.log("nvm");
+  meal_window.style.visibility = "visible";
+  localStorage.setItem("meal_window", "open");
 }
 
 const button1 = document.getElementById("add_meal");
-button1.addEventListener("click", add_meal);
+button1.addEventListener("click", Add_meal);
 
-function report_allergy() {
+// Meal window update
+function Close_Meal_Window() {
+  console.log("sdjsd");
+  localStorage.setItem("meal_window", "closed");
+}
+
+const button3 = document.getElementById("add_meal_confirm");
+button3.addEventListener("click", Close_Meal_Window);
+//
+
+function Report_allergy() {
   localStorage.setItem("test1", "report");
   console.log("msg: ", localStorage.getItem("test1"));
 }
 
 const button2 = document.getElementById("report_allergy");
-button2.addEventListener("click", report_allergy);
+button2.addEventListener("click", Report_allergy);
 
 // table control
 function addRow(
@@ -90,11 +99,8 @@ function update_table() {
 
 // Initalize
 if (first_interation) {
-  meal_window.style.visibility = "hidden";
-  first_interation = false;
-}
-
-if (show_meal_window) {
-  console.log("dsd");
-  meal_window.style.visibility = "visible";
+  if (localStorage.getItem("meal_window") != "open") {
+    meal_window.style.visibility = "hidden";
+    first_interation = false;
+  }
 }
