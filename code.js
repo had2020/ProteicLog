@@ -44,15 +44,27 @@ function Confirm_Meal() {
     inputmeal3.value,
   ];
 
+  let iteration = 0;
   for (let value of last_entry) {
+    iteration += 1;
     let replaced_new_entry = last_entry;
+
     if (date == value[0]) {
+      replaced_new_entry[value] = date_entry;
+      console.log("RE", replaced_new_entry);
+      localStorage.setItem("meal_logs", JSON.stringify(replaced_new_entry));
     } else {
       let new_entry = last_entry.concat([date_entry]);
       console.log(new_entry);
       localStorage.setItem("meal_logs", JSON.stringify(new_entry));
     }
   }
+  if (iteration == 0) {
+    let new_entry = last_entry.concat([date_entry]);
+    console.log(new_entry);
+    localStorage.setItem("meal_logs", JSON.stringify(new_entry));
+  }
+
   update_table();
   Clear_Meal_Inputs();
   meal_window.style.visibility = "hidden";
