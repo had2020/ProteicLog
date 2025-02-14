@@ -126,6 +126,7 @@ footer {
     color: #82caff;
 }
 
+/* For Dashboard */
 .dashboard_button {
     margin: 30px;
     background: #111;
@@ -145,6 +146,11 @@ footer {
     border: 4px;
     background: #333;
     border-radius: 3px;
+
+    /* force centering */
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
 }
 
 .dti {
