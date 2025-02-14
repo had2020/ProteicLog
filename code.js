@@ -11,5 +11,13 @@ function add_meal() {
   console.log("msg: ", localStorage.getItem("test1"));
 }
 
+const button1 = document.getElementById("test");
+button2.addEventListener("click", add_meal());
+
+function report_allergy() {
+  localStorage.setItem("test1", "hello");
+  console.log("msg: ", localStorage.getItem("test1"));
+}
+
 const button2 = document.getElementById("test");
-button2.addEventListener("click", Test);
+button2.addEventListener("click", report_allergy());
