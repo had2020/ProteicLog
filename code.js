@@ -15,23 +15,20 @@ const h1Element = document.getElementById("daynum");
 h1Element.innerHTML = day;
 
 function Add_meal() {
-  console.log("nvm");
   meal_window.style.visibility = "visible";
-  localStorage.setItem("meal_window", "open");
 }
 
 const button1 = document.getElementById("add_meal");
 button1.addEventListener("click", Add_meal);
 
-// Meal window update
-function Close_Meal_Window() {
-  console.log("sdjsd");
-  localStorage.setItem("meal_window", "closed");
+function Confirm_Meal() {
+  const inputmeal = document.getElementById("meal_name");
+  inputmeal.value = "";
+  meal_window.style.visibility = "hidden";
 }
 
 const button3 = document.getElementById("add_meal_confirm");
-button3.addEventListener("click", Close_Meal_Window);
-//
+button3.addEventListener("click", Confirm_Meal);
 
 function Report_allergy() {
   localStorage.setItem("test1", "report");
@@ -99,8 +96,6 @@ function update_table() {
 
 // Initalize
 if (first_interation) {
-  if (localStorage.getItem("meal_window") != "open") {
-    meal_window.style.visibility = "hidden";
-    first_interation = false;
-  }
+  meal_window.style.visibility = "hidden";
+  first_interation = false;
 }
