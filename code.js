@@ -21,6 +21,7 @@ function Add_meal() {
 const button1 = document.getElementById("add_meal");
 button1.addEventListener("click", Add_meal);
 
+// meal window
 function Confirm_Meal() {
   const inputmeal = document.getElementById("meal_name");
   inputmeal.value = "";
@@ -29,6 +30,16 @@ function Confirm_Meal() {
 
 const button3 = document.getElementById("add_meal_confirm");
 button3.addEventListener("click", Confirm_Meal);
+
+function Exit_Meal_Window() {
+  const inputmeal = document.getElementById("meal_name");
+  inputmeal.value = "";
+  meal_window.style.visibility = "hidden";
+}
+
+const button4 = document.getElementById("exit_add_meal");
+button4.addEventListener("click", Exit_Meal_Window);
+//
 
 function Report_allergy() {
   localStorage.setItem("test1", "report");

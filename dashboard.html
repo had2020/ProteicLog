@@ -30,11 +30,42 @@
         </button>
 
         <div id="meal_window" class="confirm_window">
+            <button
+                style="
+                    background-color: #222;
+                    border-radius: 20px;
+                    font-size: 20px;
+                "
+                class="exit_button"
+                id="exit_add_meal"
+            >
+                ❌
+            </button>
             <p>Can you jot down the meal's name?</p>
             <input
                 class="confirm_input"
                 type="text"
-                id="meal_name"
+                id="meal_name1"
+                name="meal"
+                required
+                minlength="1"
+                maxlength="100"
+                size="10"
+            />
+            <input
+                class="confirm_input"
+                type="text"
+                id="meal_name2"
+                name="meal"
+                required
+                minlength="1"
+                maxlength="100"
+                size="10"
+            />
+            <input
+                class="confirm_input"
+                type="text"
+                id="meal_name3"
                 name="meal"
                 required
                 minlength="1"
