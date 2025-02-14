@@ -43,9 +43,16 @@ function Confirm_Meal() {
     inputmeal2.value,
     inputmeal3.value,
   ];
-  let new_entry = last_entry.concat(date_entry);
-  console.log(new_entry);
-  localStorage.setItem("meal_logs", JSON.stringify(new_entry));
+
+  for (let value of last_entry) {
+    let replaced_new_entry = last_entry;
+    if (date == value[0]) {
+    } else {
+      let new_entry = last_entry.concat([date_entry]);
+      console.log(new_entry);
+      localStorage.setItem("meal_logs", JSON.stringify(new_entry));
+    }
+  }
   update_table();
   Clear_Meal_Inputs();
   meal_window.style.visibility = "hidden";
