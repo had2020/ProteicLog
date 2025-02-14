@@ -6,7 +6,6 @@
         <title>ProteicPluseLog</title>
         <link rel="stylesheet" type="text/css" href="styles.css" />
         <link rel="icon" href="favicon.png" type="image/png" />
-        <script src="code.js"></script>
     </head>
     <body>
         <nav class="nav_bar">
@@ -18,11 +17,18 @@
         </nav>
 
         <h1 style="color: white">Today's Date</h1>
-        <h1 style="color: white; background: #111; font-size: 100px">13</h1>
+        <h1
+            id="daynum"
+            style="color: white; background: #111; font-size: 100px"
+        >
+            13
+        </h1>
 
         <form>
-            <button class="dashboard_button">🍽️ Log Meal</button>
-            <button class="dashboard_button">🤧 Report Allergy</button>
+            <button id="add_meal" class="dashboard_button">🍽️ Log Meal</button>
+            <button id="report_allergy" class="dashboard_button">
+                🤧 Report Allergy
+            </button>
         </form>
 
         <table class="dashboard_table">
@@ -71,4 +77,5 @@
             </p>
         </footer>
     </body>
+    <script src="code.js"></script>
 </html>
