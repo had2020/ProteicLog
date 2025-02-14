@@ -22,9 +22,18 @@ const button1 = document.getElementById("add_meal");
 button1.addEventListener("click", Add_meal);
 
 // meal window
+function Clear_Meal_Inputs() {
+  const inputmeal1 = document.getElementById("meal_name1");
+  inputmeal1.value = "";
+  const inputmeal2 = document.getElementById("meal_name2");
+  inputmeal2.value = "";
+  const inputmeal3 = document.getElementById("meal_name3");
+  inputmeal3.value = "";
+}
+
 function Confirm_Meal() {
-  const inputmeal = document.getElementById("meal_name");
-  inputmeal.value = "";
+  update_table();
+  Clear_Meal_Inputs();
   meal_window.style.visibility = "hidden";
 }
 
@@ -32,8 +41,7 @@ const button3 = document.getElementById("add_meal_confirm");
 button3.addEventListener("click", Confirm_Meal);
 
 function Exit_Meal_Window() {
-  const inputmeal = document.getElementById("meal_name");
-  inputmeal.value = "";
+  Clear_Meal_Inputs();
   meal_window.style.visibility = "hidden";
 }
 
