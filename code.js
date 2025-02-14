@@ -9,7 +9,7 @@ const currentDate = new Date();
 const year = currentDate.getFullYear();
 const month = currentDate.getMonth();
 const day = currentDate.getDate();
-console.log(day, month, year);
+const date = day + "/" + month + "/" + year;
 
 const h1Element = document.getElementById("daynum");
 h1Element.innerHTML = day;
@@ -31,7 +31,21 @@ function Clear_Meal_Inputs() {
   inputmeal3.value = "";
 }
 
+// adding meals
 function Confirm_Meal() {
+  const last_entry = JSON.parse(localStorage.getItem("meal_logs")) || [];
+  const inputmeal1 = document.getElementById("meal_name1");
+  const inputmeal2 = document.getElementById("meal_name2");
+  const inputmeal3 = document.getElementById("meal_name3");
+  const date_entry = [
+    date,
+    inputmeal1.value,
+    inputmeal2.value,
+    inputmeal3.value,
+  ];
+  let new_entry = last_entry.concat(date_entry);
+  console.log(new_entry);
+  localStorage.setItem("meal_logs", JSON.stringify(new_entry));
   update_table();
   Clear_Meal_Inputs();
   meal_window.style.visibility = "hidden";
@@ -40,6 +54,7 @@ function Confirm_Meal() {
 const button3 = document.getElementById("add_meal_confirm");
 button3.addEventListener("click", Confirm_Meal);
 
+//exit window
 function Exit_Meal_Window() {
   Clear_Meal_Inputs();
   meal_window.style.visibility = "hidden";
@@ -108,6 +123,7 @@ function getAllergyColor(rating) {
   }
 }
 
+// TODO
 function update_table() {
   addRow("1/3/1", "Oatmeal", "Soup", "Pasta", "Sunny", "75℉ (24℃)", "2/5");
   addRow("1/4/1", "Eggs", "Sandwich", "Steak", "Cloudy", "68℉ (20℃)", "4/5");
@@ -115,6 +131,7 @@ function update_table() {
 
 // Initalize
 if (first_interation) {
+  update_table();
   meal_window.style.visibility = "hidden";
   first_interation = false;
 }
