@@ -21,7 +21,6 @@ function Add_meal() {
 const button1 = document.getElementById("add_meal");
 button1.addEventListener("click", Add_meal);
 
-// meal window
 function Clear_Meal_Inputs() {
   const inputmeal1 = document.getElementById("meal_name1");
   inputmeal1.value = "";
@@ -31,14 +30,16 @@ function Clear_Meal_Inputs() {
   inputmeal3.value = "";
 }
 
-// adding meals
+// meal window
 function Confirm_Meal() {
   const last_entry = JSON.parse(localStorage.getItem("meal_logs")) || [];
-  let let_last_entry = last_entry;
-  console.log(let_last_entry);
+  let let_last_entry = Array.isArray(last_entry) ? last_entry : [];
+  console.log("Before Update:", let_last_entry);
+
   const inputmeal1 = document.getElementById("meal_name1");
   const inputmeal2 = document.getElementById("meal_name2");
   const inputmeal3 = document.getElementById("meal_name3");
+
   const date_entry = [
     date,
     inputmeal1.value,
@@ -46,26 +47,23 @@ function Confirm_Meal() {
     inputmeal3.value,
   ];
 
-  let iteration = 0;
-  for (let value of last_entry) {
-    iteration += 1;
-    let replaced_new_entry = last_entry;
+  let found = false;
 
-    if (date == value[0]) {
-      replaced_new_entry[value] = date_entry;
-      console.log("RE", replaced_new_entry);
-      localStorage.setItem("meal_logs", JSON.stringify(replaced_new_entry));
-    } else {
-      let new_entry = let_last_entry.push([date_entry]);
-      console.log(new_entry);
-      localStorage.setItem("meal_logs", JSON.stringify(new_entry));
+  for (let i = 0; i < let_last_entry.length; i++) {
+    if (let_last_entry[i][0] === date) {
+      let_last_entry[i] = date_entry;
+      found = true;
+      break;
     }
   }
-  if (iteration == 0) {
-    let new_entry = let_last_entry.push([date_entry]);
-    console.log("NE", new_entry);
-    localStorage.setItem("meal_logs", JSON.stringify(new_entry));
+
+  if (!found) {
+    let_last_entry.push(date_entry);
   }
+
+  console.log("Updated meal_logs:", let_last_entry);
+
+  localStorage.setItem("meal_logs", JSON.stringify(let_last_entry));
 
   update_table();
   Clear_Meal_Inputs();
@@ -157,7 +155,9 @@ function update_table() {
   const last_entry = JSON.parse(localStorage.getItem("meal_logs")) || [];
 
   if (Array.isArray(last_entry)) {
-    for (let value of last_entry) {
+    const mealLogs = Array.isArray(last_entry[0]) ? last_entry[0] : last_entry;
+
+    for (let value of mealLogs) {
       addRow(
         value[0],
         value[1],
