@@ -192,3 +192,19 @@ footer {
     color: black;
     background-color: green;
 }
+
+.settings_bt {
+    background-color: #222;
+    border: 0px;
+    color: white;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 30px;
+}
+
+.settings_bt:hover {
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+}

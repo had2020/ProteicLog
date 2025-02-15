@@ -34,6 +34,8 @@ function Clear_Meal_Inputs() {
 // adding meals
 function Confirm_Meal() {
   const last_entry = JSON.parse(localStorage.getItem("meal_logs")) || [];
+  let let_last_entry = last_entry;
+  console.log(let_last_entry);
   const inputmeal1 = document.getElementById("meal_name1");
   const inputmeal2 = document.getElementById("meal_name2");
   const inputmeal3 = document.getElementById("meal_name3");
@@ -54,14 +56,14 @@ function Confirm_Meal() {
       console.log("RE", replaced_new_entry);
       localStorage.setItem("meal_logs", JSON.stringify(replaced_new_entry));
     } else {
-      let new_entry = last_entry.concat([date_entry]);
+      let new_entry = let_last_entry.push([date_entry]);
       console.log(new_entry);
       localStorage.setItem("meal_logs", JSON.stringify(new_entry));
     }
   }
   if (iteration == 0) {
-    let new_entry = last_entry.concat([date_entry]);
-    console.log(new_entry);
+    let new_entry = let_last_entry.push([date_entry]);
+    console.log("NE", new_entry);
     localStorage.setItem("meal_logs", JSON.stringify(new_entry));
   }
 
@@ -90,6 +92,13 @@ function Report_allergy() {
 
 const button2 = document.getElementById("report_allergy");
 button2.addEventListener("click", Report_allergy);
+
+function Settings() {
+  window.location.href = "settings.html";
+}
+
+const button5 = document.getElementById("settings_button");
+button5.addEventListener("click", Settings);
 
 // table control
 function addRow(
@@ -142,10 +151,26 @@ function getAllergyColor(rating) {
   }
 }
 
-// TODO
 function update_table() {
   addRow("1/3/1", "Oatmeal", "Soup", "Pasta", "Sunny", "75℉ (24℃)", "2/5");
-  addRow("1/4/1", "Eggs", "Sandwich", "Steak", "Cloudy", "68℉ (20℃)", "4/5");
+
+  const last_entry = JSON.parse(localStorage.getItem("meal_logs")) || [];
+
+  if (Array.isArray(last_entry)) {
+    for (let value of last_entry) {
+      addRow(
+        value[0],
+        value[1],
+        value[2],
+        value[3],
+        "Sunny",
+        "75℉ (24℃)",
+        "2/5",
+      );
+    }
+  } else {
+    console.warn("meal_logs is not an array:", last_entry);
+  }
 }
 
 // Initalize
