@@ -9,7 +9,7 @@ const currentDate = new Date();
 const year = currentDate.getFullYear();
 const month = currentDate.getMonth();
 const day = currentDate.getDate();
-const date = day + "/" + month + "/" + year;
+const date = month + "/" + day + "/" + year;
 
 const h1Element = document.getElementById("daynum");
 h1Element.innerHTML = day;
@@ -150,26 +150,31 @@ function getAllergyColor(rating) {
 }
 
 function update_table() {
-  addRow("1/3/1", "Oatmeal", "Soup", "Pasta", "Sunny", "75℉ (24℃)", "2/5");
-
   const last_entry = JSON.parse(localStorage.getItem("meal_logs")) || [];
 
-  if (Array.isArray(last_entry)) {
-    const mealLogs = Array.isArray(last_entry[0]) ? last_entry[0] : last_entry;
+  for (const [entryIndex, data_entry] of last_entry.entries()) {
+    let date = "";
+    let meal1 = "";
+    let meal2 = "";
+    let meal3 = "";
 
-    for (let value of mealLogs) {
-      addRow(
-        value[0],
-        value[1],
-        value[2],
-        value[3],
-        "Sunny",
-        "75℉ (24℃)",
-        "2/5",
-      );
+    for (const [valueIndex, value] of data_entry.entries()) {
+      // better in case
+      if (valueIndex == 0) {
+        date = value;
+      }
+      if (valueIndex == 1) {
+        meal1 = value;
+      }
+      if (valueIndex == 2) {
+        meal2 = value;
+      }
+      if (valueIndex == 3) {
+        meal3 = value;
+      }
+      //console.log(`Entry ${entryIndex}, Index ${valueIndex}, Value: ${value}`);
     }
-  } else {
-    console.warn("meal_logs is not an array:", last_entry);
+    addRow(date, meal1, meal2, meal3, "Sunny", "75℉ (24℃)", "1/5");
   }
 }
 
