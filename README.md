@@ -25,3 +25,6 @@ My project is designed to combat allergies in our increasingly allergy-prone soc
 ## My Action
 
 To contribute to SDG 3, "Health and Well-Being," I am developing an allergy tracking app.  In recent years, my immune system and other bodily organs have experienced disharmony. I have suffered numerous allergy attacks, including hives and other less pronounceable reactions. To address these issues, I am creating an app where I can log my food intake and track allergy-related events. The app will provide a simple and quick journal to record what I'm eating, when I experience discomfort, and a tracker to correlate my diet, temperature, and weather conditions with these events.
+
+## Design
+It is a rudimentary static site, in HTML, JS, and CSS, without any JS frameworks, such as React. This site is designed to be used fast, load fast, and work without too much complexity to reduce costs.  
