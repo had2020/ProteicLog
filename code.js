@@ -48,6 +48,7 @@ function Confirm_Meal() {
     inputmeal2.value,
     inputmeal3.value,
     temperature.value,
+    let_last_entry[5],
   ];
 
   let found = false;
@@ -68,6 +69,7 @@ function Confirm_Meal() {
 
   localStorage.setItem("meal_logs", JSON.stringify(let_last_entry));
 
+  location.reload();
   update_table();
   Clear_Meal_Inputs();
   //meal_window.style.visibility = "hidden";
@@ -125,6 +127,7 @@ function Confirm_Allergy() {
     let_last_entry[1],
     let_last_entry[2],
     let_last_entry[3],
+    let_last_entry[4],
     allergy_rating.value,
   ];
 
@@ -146,6 +149,7 @@ function Confirm_Allergy() {
 
   localStorage.setItem("meal_logs", JSON.stringify(let_last_entry));
 
+  location.reload();
   update_table();
   allergy_window.classList.add("hidden"); // Hide
 }
@@ -183,7 +187,16 @@ function addRow(date, breakfast, lunch, dinner, temperature, allergyRating) {
 }
 
 function getAllergyColor(rating) {
-  const numRating = parseInt(rating.split("/")[0]);
+  if (!rating || typeof rating !== "string" || !rating.includes("/")) {
+    return "gray"; // error color
+  }
+
+  const numRating = parseInt(rating.split("/")[0], 10);
+
+  if (isNaN(numRating)) {
+    return "gray"; // parser error color
+  }
+
   if (numRating <= 2) {
     return "green";
   } else if (numRating <= 4) {
@@ -213,6 +226,7 @@ function update_table() {
     let meal2 = "";
     let meal3 = "";
     let temp = "";
+    let allergy = "";
 
     for (const [valueIndex, value] of data_entry.entries()) {
       // better in case
@@ -231,9 +245,12 @@ function update_table() {
       if (valueIndex == 4) {
         temp = value;
       }
+      if (valueIndex == 5) {
+        allergy = value;
+      }
       //console.log(`Entry ${entryIndex}, Index ${valueIndex}, Value: ${value}`);
     }
-    addRow(date, meal1, meal2, meal3, temp, "0/5");
+    addRow(date, meal1, meal2, meal3, temp, allergy);
   }
 }
 
