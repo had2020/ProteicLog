@@ -230,3 +230,18 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+#meal_window {
+    opacity: 1;
+    height: auto;
+    transition:
+        opacity 0.3s ease,
+        height 0.3s ease;
+}
+
+.hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    display: none; /* Optional */
+}

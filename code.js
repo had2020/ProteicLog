@@ -15,7 +15,8 @@ const h1Element = document.getElementById("daynum");
 h1Element.innerHTML = day;
 
 function Add_meal() {
-  meal_window.style.visibility = "visible";
+  //meal_window.style.visibility = "visible";
+  meal_window.classList.remove("hidden"); // Show
 }
 
 const button1 = document.getElementById("add_meal");
@@ -67,7 +68,8 @@ function Confirm_Meal() {
 
   update_table();
   Clear_Meal_Inputs();
-  meal_window.style.visibility = "hidden";
+  //meal_window.style.visibility = "hidden";
+  meal_window.classList.add("hidden"); // Hide
 }
 
 const button3 = document.getElementById("add_meal_confirm");
@@ -76,7 +78,8 @@ button3.addEventListener("click", Confirm_Meal);
 //exit window
 function Exit_Meal_Window() {
   Clear_Meal_Inputs();
-  meal_window.style.visibility = "hidden";
+  //meal_window.style.visibility = "hidden";
+  meal_window.classList.add("hidden"); // Hide
 }
 
 const button4 = document.getElementById("exit_add_meal");
@@ -170,6 +173,7 @@ function update_table() {
 // Initalize
 if (first_interation) {
   update_table();
-  meal_window.style.visibility = "hidden";
+  //meal_window.style.visibility = "hidden";
+  meal_window.classList.add("hidden"); // Hide
   first_interation = false;
 }
