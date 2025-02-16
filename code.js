@@ -30,6 +30,22 @@ function Clear_Meal_Inputs() {
   inputmeal3.value = "";
 }
 
+function Get_weather() {
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        //TODO api
+        //https://www.weather.gov/documentation/services-web-api
+      },
+      (error) => console.error("Error getting location:", error),
+    );
+  } else {
+    console.log("Geolocation is not supported by this browser.");
+  }
+}
+
 // meal window
 function Confirm_Meal() {
   const last_entry = JSON.parse(localStorage.getItem("meal_logs")) || [];
