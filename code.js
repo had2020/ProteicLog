@@ -30,22 +30,6 @@ function Clear_Meal_Inputs() {
   inputmeal3.value = "";
 }
 
-function Get_weather() {
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        //TODO api
-        //https://www.weather.gov/documentation/services-web-api
-      },
-      (error) => console.error("Error getting location:", error),
-    );
-  } else {
-    console.log("Geolocation is not supported by this browser.");
-  }
-}
-
 // meal window
 function Confirm_Meal() {
   const last_entry = JSON.parse(localStorage.getItem("meal_logs")) || [];
@@ -115,15 +99,7 @@ const button5 = document.getElementById("settings_button");
 button5.addEventListener("click", Settings);
 
 // table control
-function addRow(
-  date,
-  breakfast,
-  lunch,
-  dinner,
-  weather,
-  temperature,
-  allergyRating,
-) {
+function addRow(date, breakfast, lunch, dinner, temperature, allergyRating) {
   const table = document.querySelector(".dashboard_table");
 
   const newRow = table.insertRow();
@@ -141,9 +117,6 @@ function addRow(
   const dinnerCell = newRow.insertCell();
   dinnerCell.textContent = dinner;
   dinnerCell.classList.add("dti2");
-
-  const weatherCell = newRow.insertCell();
-  weatherCell.textContent = weather;
 
   const temperatureCell = newRow.insertCell();
   temperatureCell.textContent = temperature;

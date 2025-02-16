@@ -208,3 +208,25 @@ footer {
     color: black;
     border-radius: 20px;
 }
+
+.temp_slider {
+    cursor: pointer;
+}
+
+.temp_slider_container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #333;
+}
+
+.temp_slider {
+    width: 150px; /* Adjust width as needed */
+}
+
+.temp_slider_container_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

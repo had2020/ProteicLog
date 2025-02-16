@@ -43,6 +43,28 @@
             >
                 ❌
             </button>
+
+            <hr style="border: 1px solid white; width: 100%; margin: 30px" />
+
+            <p>🌡️ Temperature</p>
+
+            <div class="temp_slider_container_wrapper">
+                <div class="temp_slider_container">
+                    <p style="font-size: 30px">❄️</p>
+                    <input
+                        type="range"
+                        min="1"
+                        max="3"
+                        value="2"
+                        class="temp_slider"
+                        id="myRange"
+                    />
+                    <p style="font-size: 30px">🔥</p>
+                </div>
+            </div>
+
+            <hr style="border: 1px solid white; width: 100%; margin: 30px" />
+
             <p>✍️ Can you jot down what you ate?</p>
             <p>✅ You can leave blank items</p>
             <p style="font-size: 25px">🥐 Breadfest | 🍔 Lunch | 🍕 Dinner</p>
@@ -77,6 +99,8 @@
                 size="10"
             />
             <button class="confirm_button" id="add_meal_confirm">✚</button>
+
+            <hr style="border: 1px solid white; width: 100%; margin: 30px" />
         </div>
 
         <table class="dashboard_table">
@@ -85,9 +109,8 @@
                 <td class="dti">🥐 Breadfest</td>
                 <td class="dti">🍔 Lunch</td>
                 <td class="dti">🍕 Dinner</td>
-                <td class="dti">🌤️ Weather</td>
-                <td class="dti">🌡️ Tempture</td>
-                <td class="dti2">😓 Allergy rating</td>
+                <td class="dti">🌡️ Temperature</td>
+                <td class="dti">😓 Allergy rating</td>
             </tr>
             <tr></tr>
             <tr></tr>
