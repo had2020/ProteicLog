@@ -40,12 +40,14 @@ function Confirm_Meal() {
   const inputmeal1 = document.getElementById("meal_name1");
   const inputmeal2 = document.getElementById("meal_name2");
   const inputmeal3 = document.getElementById("meal_name3");
+  const temperature = document.getElementById("temp");
 
   const date_entry = [
     date,
     inputmeal1.value,
     inputmeal2.value,
     inputmeal3.value,
+    temperature.value,
   ];
 
   let found = false;
@@ -123,7 +125,7 @@ function addRow(date, breakfast, lunch, dinner, temperature, allergyRating) {
 
   const temperatureCell = newRow.insertCell();
   temperatureCell.textContent = temperature;
-  temperatureCell.classList.add("dti2");
+  temperatureCell.style.backgroundColor = getTempColor(temperature);
 
   const allergyCell = newRow.insertCell();
   allergyCell.textContent = allergyRating;
@@ -141,6 +143,17 @@ function getAllergyColor(rating) {
   }
 }
 
+function getTempColor(rating) {
+  const numRating = parseInt(rating[0]);
+  if (numRating == 1) {
+    return "blue";
+  } else if (numRating == 2) {
+    return "orange";
+  } else {
+    return "red";
+  }
+}
+
 function update_table() {
   const last_entry = JSON.parse(localStorage.getItem("meal_logs")) || [];
 
@@ -149,6 +162,7 @@ function update_table() {
     let meal1 = "";
     let meal2 = "";
     let meal3 = "";
+    let temp = "";
 
     for (const [valueIndex, value] of data_entry.entries()) {
       // better in case
@@ -164,9 +178,12 @@ function update_table() {
       if (valueIndex == 3) {
         meal3 = value;
       }
+      if (valueIndex == 4) {
+        temp = value;
+      }
       //console.log(`Entry ${entryIndex}, Index ${valueIndex}, Value: ${value}`);
     }
-    addRow(date, meal1, meal2, meal3, "Sunny", "75℉ (24℃)", "1/5");
+    addRow(date, meal1, meal2, meal3, temp, "0/5");
   }
 }
 
