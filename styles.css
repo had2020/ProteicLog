@@ -239,6 +239,14 @@ footer {
         height 0.3s ease;
 }
 
+#allergy_window {
+    opacity: 1;
+    height: auto;
+    transition:
+        opacity 0.3s ease,
+        height 0.3s ease;
+}
+
 .hidden {
     opacity: 0;
     height: 0;

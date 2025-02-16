@@ -88,13 +88,22 @@ const button4 = document.getElementById("exit_add_meal");
 button4.addEventListener("click", Exit_Meal_Window);
 //
 
-function Report_allergy() {
-  localStorage.setItem("test1", "report");
-  console.log("msg: ", localStorage.getItem("test1"));
+//exit allergy window
+function Exit_Allergy_Window() {
+  allergy_window.classList.add("hidden"); // Hide
 }
 
-const button2 = document.getElementById("report_allergy");
-button2.addEventListener("click", Report_allergy);
+const button6 = document.getElementById("exit_allergy_window");
+button6.addEventListener("click", Exit_Allergy_Window);
+//
+
+// allergy window init
+function Open_Allergy_Window() {
+  allergy_window.classList.remove("hidden"); // Show
+}
+
+const button7 = document.getElementById("report_allergy");
+button7.addEventListener("click", Open_Allergy_Window);
 
 function Settings() {
   window.location.href = "settings.html";
@@ -102,6 +111,47 @@ function Settings() {
 
 const button5 = document.getElementById("settings_button");
 button5.addEventListener("click", Settings);
+
+// allergy window
+function Confirm_Allergy() {
+  const last_entry = JSON.parse(localStorage.getItem("meal_logs")) || [];
+  let let_last_entry = Array.isArray(last_entry) ? last_entry : [];
+  console.log("Before Update:", let_last_entry);
+
+  const allergy_rating = document.getElementById("allergy_rating");
+
+  const date_entry = [
+    let_last_entry[0],
+    let_last_entry[1],
+    let_last_entry[2],
+    let_last_entry[3],
+    allergy_rating.value,
+  ];
+
+  let found = false;
+
+  for (let i = 0; i < let_last_entry.length; i++) {
+    if (let_last_entry[i][0] === date) {
+      let_last_entry[i] = date_entry;
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    let_last_entry.push(date_entry);
+  }
+
+  console.log("Updated meal_logs:", let_last_entry);
+
+  localStorage.setItem("meal_logs", JSON.stringify(let_last_entry));
+
+  update_table();
+  allergy_window.classList.add("hidden"); // Hide
+}
+
+const button8 = document.getElementById("report_allergy_confirm");
+button8.addEventListener("click", Confirm_Meal);
 
 // table control
 function addRow(date, breakfast, lunch, dinner, temperature, allergyRating) {
@@ -192,5 +242,6 @@ if (first_interation) {
   update_table();
   //meal_window.style.visibility = "hidden";
   meal_window.classList.add("hidden"); // Hide
+  allergy_window.classList.add("hidden"); // Hide
   first_interation = false;
 }
