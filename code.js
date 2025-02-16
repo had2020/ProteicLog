@@ -1,4 +1,5 @@
 console.log("Loaded js...");
+console.log(JSON.parse(localStorage.getItem("meal_logs")));
 
 // change data
 let first_interation = true;
@@ -42,13 +43,20 @@ function Confirm_Meal() {
   const inputmeal3 = document.getElementById("meal_name3");
   const temperature = document.getElementById("temp");
 
+  let current_entry = 0;
+  for (index of last_entry) {
+    if (index[0] == date) {
+      current_entry = index;
+    }
+  }
+
   const date_entry = [
     date,
     inputmeal1.value,
     inputmeal2.value,
     inputmeal3.value,
     temperature.value,
-    let_last_entry[5],
+    current_entry[5],
   ];
 
   let found = false;
@@ -120,14 +128,21 @@ function Confirm_Allergy() {
   let let_last_entry = Array.isArray(last_entry) ? last_entry : [];
   console.log("Before Update:", let_last_entry);
 
-  const allergy_rating = document.getElementById("allergy_rating");
+  const allergy_rating = document.getElementById("allergy_rating_silder");
+
+  let current_entry = 0;
+  for (index of last_entry) {
+    if (index[0] == date) {
+      current_entry = index;
+    }
+  }
 
   const date_entry = [
-    let_last_entry[0],
-    let_last_entry[1],
-    let_last_entry[2],
-    let_last_entry[3],
-    let_last_entry[4],
+    date,
+    current_entry[1],
+    current_entry[2],
+    current_entry[3],
+    current_entry[4],
     allergy_rating.value,
   ];
 
@@ -148,14 +163,13 @@ function Confirm_Allergy() {
   console.log("Updated meal_logs:", let_last_entry);
 
   localStorage.setItem("meal_logs", JSON.stringify(let_last_entry));
-
   location.reload();
   update_table();
   allergy_window.classList.add("hidden"); // Hide
 }
 
 const button8 = document.getElementById("report_allergy_confirm");
-button8.addEventListener("click", Confirm_Meal);
+button8.addEventListener("click", Confirm_Allergy);
 
 // table control
 function addRow(date, breakfast, lunch, dinner, temperature, allergyRating) {
@@ -187,27 +201,19 @@ function addRow(date, breakfast, lunch, dinner, temperature, allergyRating) {
 }
 
 function getAllergyColor(rating) {
-  if (!rating || typeof rating !== "string" || !rating.includes("/")) {
-    return "gray"; // error color
-  }
-
-  const numRating = parseInt(rating.split("/")[0], 10);
-
-  if (isNaN(numRating)) {
-    return "gray"; // parser error color
-  }
-
-  if (numRating <= 2) {
+  if (rating == 1) {
     return "green";
-  } else if (numRating <= 4) {
+  }
+  if (rating == 2) {
     return "orange";
-  } else {
+  }
+  if (rating == 3) {
     return "red";
   }
 }
 
 function getTempColor(rating) {
-  const numRating = parseInt(rating[0]);
+  const numRating = parseInt(rating);
   if (numRating == 1) {
     return "blue";
   } else if (numRating == 2) {
