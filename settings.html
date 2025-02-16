@@ -20,6 +20,16 @@
 
         <button class="settings_bt">Clear Data</button>
 
+        <script>
+            document
+                .querySelector(".settings_bt")
+                .addEventListener("click", function () {
+                    console.log("Clear Data button clicked!");
+                    localStorage.clear();
+                    alert("Data has been cleared!");
+                });
+        </script>
+
         <footer>
             <p class="footer-text">
                 MIT licence, ProteicPulseLog
